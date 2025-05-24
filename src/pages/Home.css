@@ -1,0 +1,50 @@
+.home-container {
+  background-image: url('/sr-25.jpg'); /* Este lo pondrás en /public después */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.home-content {
+  background-color: rgba(0, 0, 0, 0.5); /* Oscurece para que resalte el texto */
+  padding: 30px;
+  border-radius: 12px;
+}
+/* Resetea márgenes/padding por defecto del navegador */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+.home-content {
+  position: relative;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.137);
+  color: #cc3344;
+  padding: 40px;
+  margin-top: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgb(0, 0, 0);
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+  font-weight: bold;
+}
+.subtext {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  color: #cc3344;
+  margin-top: 20px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+  font-weight: bold;
+}

@@ -1,0 +1,213 @@
+/* src/components/Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+  position: relative;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: white;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logo-img {
+  height: 70px;
+  width: 80px;
+  object-fit: contain;
+}
+
+.logo span {
+  font-family: 'Arial', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links a {
+  color: #f0f0f0;
+  text-decoration: none;
+  padding: 10px 16px;
+  border: 2px solid #4CAF50;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px #4CAF50;
+}
+
+.nav-links a:hover {
+  background-color: #4CAF50;
+  color: black;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #4CAF50, 0 0 20px #4CAF50;
+}
+
+/* Estilos para el carrito */
+.carrito-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+}
+
+.carrito-icon {
+  font-size: 1.3rem;
+}
+
+.carrito-count {
+  position: absolute;
+  top: -5px;
+  right: 0;
+  background-color: #e74c3c;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* Estilos para el menú de usuario */
+.nav-links li,
+.user-menu-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+
+/*.username {
+  color: white;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}*/
+.username {
+  color: #f0f0f0;
+  text-decoration: none;
+  padding: 10px 16px;
+  border: 2px solid #4CAF50;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px #4CAF50;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.username:hover {
+  background-color: #4CAF50;
+  color: black;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #4CAF50, 0 0 20px #4CAF50;
+}
+
+/*.username:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}*/
+
+.dropdown-arrow {
+  font-size: 0.6rem;
+  transition: transform 0.3s ease;
+}
+
+.user-menu-container:hover .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #444;
+  min-width: 160px;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  overflow: hidden;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+/*.user-menu-container:hover .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}*/
+.dropdown-content.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.user-menu-container
+.logout-btn {
+  width: 100%;
+  padding: 10px 15px;
+  text-align: left;
+  background-color: transparent;
+  border: 1px solid #ff6b6b;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
+
+.logout-btn:hover {
+  background-color: #ff6b6b;
+  color: black;
+}
+
+
+.logout-btn::before {
+  content: "→";
+  color: #ff6b6b;
+}
+
+/* Efecto activo para enlaces */
+.nav-links a.active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+/* En navbar.css */
+.nav-links {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+
+.nav-links li {
+  list-style: none;
+}

@@ -1,0 +1,146 @@
+/* Fuentes tácticas */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap');
+
+.sobre-nosotros-container {
+  background: linear-gradient(to right, #0f0f0f, #1a1a1a);
+  color: #e1e1e1;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  font-family: 'Share Tech Mono', monospace;
+  display: flex;
+  align-items: center;
+}
+
+.contenido {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.imagen-tactica {
+  width: 100%;
+  height: 100%;
+  max-height: 80vh;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid #ff4655;
+}
+
+.texto {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  color: #ff4655;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(255, 70, 85, 0.5);
+}
+
+h2 {
+  font-family: 'Orbitron', sans-serif;
+  color: #ff4655;
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+  border-bottom: 1px solid #333;
+  padding-bottom: 0.5rem;
+}
+
+p {
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+strong {
+  color: #ff6868;
+}
+
+.firma {
+  font-style: italic;
+  margin-top: 2rem;
+  color: #bbb;
+  border-top: 1px solid #333;
+  padding-top: 1rem;
+  font-size: 1.2rem;
+}
+
+/* Efectos especiales */
+.texto p::first-letter {
+  font-size: 1.5em;
+  color: #ff4655;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contenido {
+    grid-template-columns: 1fr;
+  }
+  
+  .imagen-tactica {
+    max-height: 400px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+}
+.typewriter {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 2px solid #ff6868;
+  white-space: nowrap;
+  letter-spacing: 0.08em;
+  width: 0ch;
+  animation: typing 0.7s steps(15, end) forwards, blink-caret 0.8s step-end infinite;
+}
+
+/* Nueva regla para typing */
+@keyframes typing {
+  from {
+    width: 0ch;
+  }
+  to {
+    width: 15ch;
+  }
+}
+/* Cursor parpadeante */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #ff6868 }
+}
+.delay-1 {
+  animation:
+    fadeIn 0.1s ease forwards 0s,
+    typing 2.5s steps(30, end) forwards 0s,
+    blink-caret 0.8s step-end infinite 2.5s;
+}
+
+.delay-2 {
+  animation:
+    fadeIn 0.1s ease forwards 2.8s,
+    typing 2.5s steps(30, end) forwards 2.8s,
+    blink-caret 0.8s step-end infinite 5.3s;
+}
+
+.delay-3 {
+  animation:
+    fadeIn 0.1s ease forwards 5.6s,
+    typing 2.5s steps(30, end) forwards 5.6s,
+    blink-caret 0.8s step-end infinite 8.1s;
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
