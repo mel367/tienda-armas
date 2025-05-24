@@ -1,2 +1,0 @@
-# tienda-armas
-primer set
