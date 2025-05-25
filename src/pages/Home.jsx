@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductoList from '../components/ProductoList';
-import './home.css';
+import './Home.css';
 import { Link } from 'react-router-dom'; 
 
 function Home() {
