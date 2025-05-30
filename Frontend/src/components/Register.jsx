@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { agregarUsuario, buscarUsuarioPorEmail } from "../utils/indexedDB";
+import { REGISTER_USER } from "../utils/Url/urlUtils";
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -22,36 +22,35 @@ function Register() {
     return true;
   };
 
-  const encriptarPassword = async (text) => {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(text);
-    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-    return Array.from(new Uint8Array(hashBuffer))
-      .map((b) => b.toString(16).padStart(2, "0"))
-      .join("");
-  };
-
   const handleRegister = async (e) => {
     e.preventDefault();
     setError("");
 
     if (!validarCampos()) return;
 
-    const userExistente = await buscarUsuarioPorEmail(email);
-    if (userExistente) {
-      setError("El usuario ya está registrado");
-      return;
+    try {
+      const res = await fetch(`${REGISTER_USER}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, contraseña: password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "Error al registrar usuario");
+      }
+
+      // Puedes guardar el token en localStorage si lo deseas
+      localStorage.setItem("token", data.token);
+
+      alert("Registro exitoso");
+      navigate("/login");
+    } catch (err) {
+      setError(err.message);
     }
-
-    const passwordHash = await encriptarPassword(password);
-
-    await agregarUsuario({
-      email,
-      password: passwordHash,
-    });
-
-    alert("Registro exitoso, puedes iniciar sesión");
-    navigate("/login");
   };
 
   return (

@@ -1,7 +1,7 @@
-import React from 'react';
-import ProductoList from '../components/ProductoList';
-import './Home.css';
-import { Link } from 'react-router-dom'; 
+import React from "react";
+import ProductoList from "../Productos/ProductoList/ProductoList";
+import "./Home.css";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -9,9 +9,7 @@ function Home() {
       <div className="home-overlay" />
       <div className="home-content fade-in">
         <h1>Bienvenido a tu tienda de armas de confianza</h1>
-        <p>
-          Disparando precios y tambien balas
-        </p>
+        <p>Disparando precios y tambien balas</p>
       </div>
     </div>
   );

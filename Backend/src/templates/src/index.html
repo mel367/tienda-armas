@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>System Pium Pium Store</title>
+    <script src="./js/fetchData.js"></script>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <h1>Welcome to System Pium Pium Store</h1>
+
+    <form id="productForm" enctype="multipart/form-data" method="post">
+      <label>Nombre: <input type="text" name="nombre" /></label><br />
+      <label>Descripción: <input type="text" name="descripcion" /></label><br />
+      <label>Precio: <input type="number" name="precio" /></label><br />
+      <label>Calibre: <input type="text" name="calibre" /></label><br />
+      <label
+        >Sistema de disparo:
+        <input type="text" name="sistemaDeDisparo" /></label
+      ><br />
+      <label>Longitud: <input type="text" name="longitud" /></label><br />
+      <label>Peso: <input type="text" name="peso" /></label><br />
+      <label>Capacidad: <input type="text" name="capacidad" /></label><br />
+      <label>Imagen: <input type="file" name="imagen" accept="image/*" /></label
+      ><br /><br />
+      <button type="submit">Crear Producto</button>
+    </form>
+
+    <p id="mensaje"></p>
+  </body>
+</html>

@@ -1,54 +1,50 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { buscarUsuarioPorEmail } from "../utils/indexedDB"; 
-import './Login.css';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Login.css";
+import { LOGIN_USER } from "../utils/Url/urlUtils";
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!email || !password) {
-      setError('Todos los campos son obligatorios');
+      setError("Todos los campos son obligatorios");
       return;
     }
 
     try {
-      const user = await buscarUsuarioPorEmail(email);
-      if (!user) {
-        setError('Usuario no encontrado');
-        return;
+      const res = await fetch(`${LOGIN_USER}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, contraseña: password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "Error al iniciar sesión");
       }
 
-      const hashedInput = await hashPassword(password);
-      if (user.password !== hashedInput) {
-        setError('Contraseña incorrecta');
-        return;
-      }
+      // Guardar el token y usuario
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("usuarioNombre", email.split("@")[0]);
+      sessionStorage.setItem("user", JSON.stringify(data.usuario));
 
-      const nombre = email.split("@")[0];
-      localStorage.setItem("usuarioNombre", nombre);
-      sessionStorage.setItem('user', JSON.stringify(user));
+      // 🔄 Notificar cambio para el navbar, si es necesario
+      window.dispatchEvent(new Event("storage"));
 
-      // 🔄 Forzar actualización del Navbar
-      window.dispatchEvent(new Event('storage'));
-
-      navigate('/');
+      navigate("/");
     } catch (err) {
       console.error(err);
-      setError('Error al iniciar sesión');
+      setError(err.message);
     }
-  };
-
-  const hashPassword = async (password) => {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(password);
-    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-    return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
   };
 
   return (
@@ -56,12 +52,22 @@ function Login() {
       <h2>Iniciar Sesión</h2>
       <form onSubmit={handleSubmit}>
         <label>Email:</label>
-        <input type="email" value={email} onChange={e => setEmail(e.target.value)} required />
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
 
         <label>Contraseña:</label>
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
 
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {error && <p style={{ color: "red" }}>{error}</p>}
 
         <button type="submit">Entrar</button>
 
